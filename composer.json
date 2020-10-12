@@ -16,7 +16,7 @@
     "minimum-stability": "stable",
     "require": {
         "laminas/laminas-servicemanager": "3.4.*",
-        "laminas/laminas-http": "2.11.*"
+        "laminas/laminas-http": "2.*"
     },
     "require-dev": {
         "phpunit/phpunit": "8.5.x-dev"
