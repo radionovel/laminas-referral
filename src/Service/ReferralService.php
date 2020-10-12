@@ -66,7 +66,7 @@ class ReferralService
      */
     protected function extractReferralCodeFromRequest()
     {
-        $referral_code = null;
+        $referral_code = "";
         if ($this->request->isPost()) {
             $referral_code = $this->request->getPost($this->referralCodeName, null);
         }
@@ -82,7 +82,7 @@ class ReferralService
      */
     public function getReferralCode()
     {
-        return $this->getCodeFromCookie();
+         return $this->getCodeFromCookie() ? $this->extractReferralCodeFromRequest() : "";
     }
 
     /**
