@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="zend-referal" default="sonar" basedir="." xmlns:sonar="antlib:org.sonar.ant">
+
+    <property environment="env" />
+    <!-- Define the SonarQube global properties (the most usual way is to pass these properties via the command line) -->
+    <property name="sonar.host.url" value="${env.SONAR_HOST}" />
+
+    <!-- Define the SonarQube project properties -->
+    <property name="sonar.projectKey" value="${env.PROJECT_KEY}" />
+    <property name="sonar.login" value="${env.PROJECT_TOKEN}" />
+    <property name="sonar.projectName" value="${env.PROJECT_NAME}" />
+    <property name="sonar.projectVersion" value="1.0" />
+    <property name="sonar.sources" value="${env.SOURCES}" />
+    <property name="sonar.php.coverage.reportPaths" value="${env.COVERAGE}" />
+
+    <target name="sonar">
+        <taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
+            <!-- Update the following line, or put the "sonarqube-ant-task-*.jar" file in your "$HOME/.ant/lib" folder -->
+            <classpath path="${env.SONARSCANER_ANT_BIN}" />
+        </taskdef>
+
+        <!-- Execute SonarScanner for Ant Analysis -->
+        <sonar:sonar />
+    </target>
+
+</project>
