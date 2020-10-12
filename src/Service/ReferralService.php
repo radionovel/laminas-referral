@@ -82,7 +82,7 @@ class ReferralService
      */
     public function getReferralCode()
     {
-         return $this->getCodeFromCookie() ? $this->extractReferralCodeFromRequest() : "";
+        return $this->getCodeFromCookie() ?: $this->extractReferralCodeFromRequest();
     }
 
     /**
@@ -100,7 +100,9 @@ class ReferralService
      */
     private function storeReferralCode(?string $referral_code)
     {
-        setcookie($this->referralCodeName, $referral_code, $this->getReferrerCodeTtl(), '/');
+        if (! $this->getCodeFromCookie()) {
+            setcookie($this->referralCodeName, $referral_code, $this->getReferrerCodeTtl(), '/');
+        }
     }
 
     /**
